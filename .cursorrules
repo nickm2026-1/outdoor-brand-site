@@ -1,0 +1,13 @@
+# UI & Design Standards
+- Always use **Tailwind CSS v4** utility classes for styling.
+- Prioritize **shadcn/ui** components for all interactive elements.
+- **Aesthetic Goal:** Mimic a high-end "SaaS" or "Modern Blog" look. 
+- **Spacing:** Use generous whitespace (e.g., `py-20`, `gap-8`). Never crowd elements.
+- **Typography:** Use `font-sans` with tight tracking for headings (`tracking-tight`) and balanced leading for body text.
+- **Cards:** Use subtle borders (`border-border/50`), soft shadows (`shadow-sm`), and rounded corners (`rounded-xl`).
+- **Color Palette:** Use a refined "Zinc" or "Slate" scale for neutrals. Use a single primary accent color consistently.
+
+# Technical Instructions
+- Use Next.js 15 App Router patterns (Server Components by default).
+- Ensure images use `next/image` with proper aspect ratios (e.g., `aspect-video` or `aspect-square`) and `object-cover`.
+- When generating layouts, use a "Container" pattern to keep content centered and max-width restricted (e.g., `max-w-7xl mx-auto px-4`).
