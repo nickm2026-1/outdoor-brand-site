@@ -18,7 +18,7 @@ export default async function EditPostPage({
   const supabase = await createClient();
   const { data: post } = await supabase
     .from("posts")
-    .select("id, title, content, image_url, slug")
+    .select("id, title, content, image_url, slug, tags")
     .eq("id", id)
     .single();
 
@@ -71,6 +71,25 @@ export default async function EditPostPage({
             defaultValue={post.content}
             className="mt-2"
           />
+        </div>
+        <div>
+          <label
+            htmlFor="tags"
+            className="mb-1 block text-sm font-medium text-foreground"
+          >
+            Tags
+          </label>
+          <input
+            id="tags"
+            name="tags"
+            type="text"
+            placeholder="hiking, gear, review"
+            defaultValue={(post.tags ?? []).join(", ")}
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          />
+          <p className="mt-1 text-xs text-muted-foreground">
+            Separate multiple tags with commas.
+          </p>
         </div>
         <div>
           <label

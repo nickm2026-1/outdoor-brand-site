@@ -10,6 +10,10 @@ export async function updatePost(id: string, formData: FormData) {
   const content = formData.get("content") as string;
   const image_url = (formData.get("image_url") as string) || null;
   const image = formData.get("image") as File | null;
+  const tags = ((formData.get("tags") as string) || "")
+    .split(",")
+    .map((t) => t.trim().toLowerCase())
+    .filter(Boolean);
 
   if (!title?.trim() || !content?.trim()) {
     redirect(
@@ -51,6 +55,7 @@ export async function updatePost(id: string, formData: FormData) {
       title: title.trim(),
       content: content.trim(),
       image_url: finalImageUrl,
+      tags,
     })
     .eq("id", id);
 

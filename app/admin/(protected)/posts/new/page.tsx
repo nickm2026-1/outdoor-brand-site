@@ -55,6 +55,24 @@ export default async function NewPostPage({
         </div>
         <div>
           <label
+            htmlFor="tags"
+            className="mb-1 block text-sm font-medium text-foreground"
+          >
+            Tags
+          </label>
+          <input
+            id="tags"
+            name="tags"
+            type="text"
+            placeholder="hiking, gear, review"
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          />
+          <p className="mt-1 text-xs text-muted-foreground">
+            Separate multiple tags with commas.
+          </p>
+        </div>
+        <div>
+          <label
             htmlFor="image_url"
             className="mb-1 block text-sm font-medium text-foreground"
           >
