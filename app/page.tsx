@@ -33,12 +33,13 @@ export default async function Home() {
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] overflow-hidden">
         <Image
-          src="/hero-camping.png"
-          alt="Camping at sunrise in the mountains"
+          src="https://plus.unsplash.com/premium_photo-1701198467387-f9817381dace?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Dramatic coastal cliffs at sunset"
           fill
           className="object-cover object-center"
           priority
           sizes="100vw"
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" aria-hidden />
         <div className="relative z-10 flex min-h-[90vh] flex-col justify-end pb-20 md:pb-28">
@@ -159,9 +160,14 @@ export default async function Home() {
 
       {/* ── Destinations CTA Hero ─────────────────────────────────── */}
       <section className="relative min-h-[50vh] overflow-hidden flex items-center">
-        {/* Gradient background — swap for an image by adding an <Image fill …> here */}
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-neutral-800 to-stone-700" aria-hidden />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,200,100,0.15),_transparent_60%)]" aria-hidden />
+        <Image
+          src="/destinations-cta.png"
+          alt="Coastal cliffs at sunset"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/20" aria-hidden />
         <div className="relative z-10 w-full py-24">
           <div className="max-w-7xl mx-auto px-6">
             <div className="max-w-xl">
@@ -227,22 +233,21 @@ export default async function Home() {
                         <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted/50" />
                       )}
                     </div>
-                    <div className="flex flex-1 flex-col p-5">
+                    <div className="flex flex-1 flex-col p-6">
                       {product.category && (
                         <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
                           {product.category}
                         </span>
                       )}
-                      <h3 className="mt-1.5 text-base font-semibold tracking-tight text-foreground leading-snug">
+                      <h3 className="mt-2 text-base font-semibold tracking-tight text-foreground leading-snug">
                         {product.name}
                       </h3>
                       {product.affiliate_link && (
-                        <Button size="sm" className="mt-auto pt-4" asChild>
+                        <Button size="sm" className="mt-6 w-full gap-1.5" asChild>
                           <a
                             href={product.affiliate_link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-4 flex items-center gap-1.5"
                           >
                             View on Amazon <ArrowRight className="size-3.5" />
                           </a>
