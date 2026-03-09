@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export default async function GearPage() {
   const supabase = await createClient();
@@ -23,48 +24,44 @@ export default async function GearPage() {
           {products.map((product) => (
             <li
               key={product.id}
-              className="overflow-hidden rounded-lg border border-border bg-card"
+              className="group flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
-              {product.image_url ? (
-                <div className="relative aspect-square w-full bg-muted">
+              <div className="relative aspect-square w-full overflow-hidden bg-muted">
+                {product.image_url ? (
                   <Image
                     src={product.image_url}
                     alt={product.name}
                     fill
                     unoptimized
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                </div>
-              ) : (
-                <div className="aspect-square w-full bg-muted" />
-              )}
-              <div className="p-5">
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted/50" />
+                )}
+              </div>
+              <div className="flex flex-1 flex-col p-6">
                 {product.category && (
-                  <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  <span className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
                     {product.category}
                   </span>
                 )}
-                <h2 className="mt-1 text-lg font-semibold text-foreground">
+                <h2 className="mt-2 text-base font-semibold tracking-tight text-foreground leading-snug">
                   {product.name}
                 </h2>
                 {product.description && (
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
                     {product.description}
                   </p>
                 )}
                 {product.affiliate_link && (
-                  <Button
-                    size="sm"
-                    className="mt-4 w-full"
-                    asChild
-                  >
+                  <Button size="sm" className="mt-6 w-full gap-1.5" asChild>
                     <a
                       href={product.affiliate_link}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View on Amazon
+                      View on Amazon <ArrowRight className="size-3.5" />
                     </a>
                   </Button>
                 )}
