@@ -4,6 +4,7 @@ export type Post = {
   slug: string;
   content: string;
   image_url: string | null;
+  tags: string[];
   created_at: string;
 };
 
